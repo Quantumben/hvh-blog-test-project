@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1 class="text-2xl font-bold mb-4">Blog Posts</h1>
+
+<a href="{% url 'post_create' %}" class="bg-blue-500 text-white py-2 px-4 rounded">Create New Post</a>
+
+<ul class="mt-4">
+    {% for post in posts %}
+    <li class="border p-4 my-2 rounded bg-white">
+        <h2 class="text-xl font-semibold">{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        {% comment %} <div class="mt-2">
+            <a href="{% url 'post_update' post.id %}" class="text-blue-500">Edit</a> |
+            <a href="{% url 'post_delete' post.id %}" class="text-red-500">Delete</a>
+        </div> {% endcomment %}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
